@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.shortcuts import redirect
 from django.urls import reverse
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
 from webapp.forms import SimpleSearchForm, ProductForm
 from webapp.models import Product
@@ -39,6 +39,15 @@ class OneProductView(DetailView):
 class ProductCreateView(CreateView):
     model = Product
     template_name = 'product/product_create.html'
+    form_class = ProductForm
+
+    def get_success_url(self):
+        return reverse('product_view', kwargs={'pk': self.object.pk})
+
+
+class ProductUpdateView(UpdateView):
+    model = Product
+    template_name = 'product/product_update.html'
     form_class = ProductForm
 
     def get_success_url(self):
