@@ -7,7 +7,7 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         exclude = []
-        widgets = {'category': forms.widgets.CheckboxSelectMultiple}
+        widgets = {'category': forms.widgets.Select}
 
 
 class SimpleSearchForm(forms.Form):
