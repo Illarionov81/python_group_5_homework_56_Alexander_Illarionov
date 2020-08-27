@@ -16,6 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from webapp.views import ProductsView, multi_delete
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', ProductsView.as_view(), name='products'),
+    path('multi_delete/', multi_delete, name='multi_delete'),
 ]
