@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.shortcuts import redirect
-from django.urls import reverse
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.urls import reverse, reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from webapp.forms import SimpleSearchForm, ProductForm
 from webapp.models import Product
@@ -10,7 +10,7 @@ from webapp.models import Product
 def multi_delete(request):
     data = request.POST.getlist('id')
     Product.objects.filter(pk__in=data).delete()
-    return redirect('projects')
+    return redirect('products')
 
 
 class ProductsView(ListView):
@@ -52,5 +52,13 @@ class ProductUpdateView(UpdateView):
 
     def get_success_url(self):
         return reverse('product_view', kwargs={'pk': self.object.pk})
+
+
+class ProductDeleteView(DeleteView):
+    model = Product
+    template_name = 'product/product_delete.html'
+    success_url = reverse_lazy('products')
+
+
 
 
