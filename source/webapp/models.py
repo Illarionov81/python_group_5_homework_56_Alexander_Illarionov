@@ -29,7 +29,7 @@ class Product(models.Model):
 
 class Basket(models.Model):
     product = models.ForeignKey('webapp.Product', related_name='product', on_delete=models.CASCADE, verbose_name='Продукт')
-    amount = models.IntegerField(verbose_name='Количество')
+    amount = models.IntegerField(null=True, verbose_name='Количество')
 
     class Meta:
         verbose_name = 'Корзина'
