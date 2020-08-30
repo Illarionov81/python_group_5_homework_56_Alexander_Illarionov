@@ -5,7 +5,7 @@ from django.views.generic import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.core.exceptions import ObjectDoesNotExist
 
-from webapp.forms import BasketForm
+from webapp.forms import BasketForm, OrderForm
 from webapp.models import Product, Basket
 
 
@@ -38,7 +38,8 @@ class BasketView(ListView):
         context = super().get_context_data(**kwargs)
         baskets = []
         for i in Basket.objects.all():
-            baskets.append({'total': i.product.price * i.amount, 'product': i.product, 'amount': i.amount, 'pk': i.pk})
+            baskets.append({'total': i.product.price * i.amount,
+                            'product': i.product, 'amount': i.amount, 'pk': i.pk})
         context['baskets'] = baskets
         total = 0
         for i in Basket.objects.all():

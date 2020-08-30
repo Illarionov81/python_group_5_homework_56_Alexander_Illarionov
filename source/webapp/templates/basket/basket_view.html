@@ -27,5 +27,16 @@
 
     {% endfor %}
     </table>
+    <hr>
     Total: {{ total }}
+    <hr>
+    <div class="row mb-5">
+        <form action="{% url 'order_create' %}" method="POST">
+        {% csrf_token %}
+            Имя: <input type="text" required name="user_name">
+            Адресс: <input type="text" required name="address">
+            Телефон: <input type="text" required name="telephone">
+            <input type="submit" value="Оформить заказ">
+        </form>
+    </div>
 {% endblock %}

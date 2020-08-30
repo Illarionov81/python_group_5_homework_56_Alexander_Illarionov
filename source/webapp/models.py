@@ -33,6 +33,7 @@ class Basket(models.Model):
 
     class Meta:
         verbose_name = 'Корзина'
+        verbose_name_plural = 'Корзины'
 
 
 class ProductOrder(models.Model):
@@ -51,3 +52,7 @@ class Order(models.Model):
     telephone = models.CharField(max_length=100, null=False, blank=False, verbose_name='Телефон')
     address = models.CharField(max_length=200, null=False, blank=False, verbose_name='Адресс')
     created_time = models.DateTimeField(auto_now_add=True, verbose_name='Время создания')
+
+    class Meta:
+        verbose_name = 'Заказ'
+        verbose_name_plural = 'Заказы'
