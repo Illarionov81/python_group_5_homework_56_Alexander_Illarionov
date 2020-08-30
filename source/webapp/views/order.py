@@ -21,5 +21,6 @@ class OrderCreate(View):
             print(basket.product_id)
             print(ProductOrder)
             order.save()
+        Basket.objects.all().delete()
         return redirect('products')
 
