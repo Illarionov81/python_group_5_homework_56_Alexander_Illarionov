@@ -12,54 +12,52 @@
     </div>
 </div>
 <hr>
-<form action="{% url 'multi_delete'%}" method="POST">
-    {% csrf_token %}
-        <div class="row">
-            <div class="col col-lg-6"><h1 class="pt-4"><b>Products: </b></h1></div>
-            <div class="col col-lg-6 pt-4 mt-2 type_battot_delete_all">
-                <input class="btn btn-danger" type="submit" value="Удалить выбранные товары">
-            </div>
+    <div class="row">
+        <div class="col col-lg-6"><h1 class="pt-4">
+            <b>Products: </b></h1>
         </div>
-        <hr>
-    {% for product in products_list %}
-        <div class="row">
-            <div class="col col-lg-1">
-                <label>
-                    <input class="ml-4" type="checkbox" name="id" value="{{ product.pk }}">
-                </label>
-            </div>
-            <div class="col col-lg-6">
-                <h3><a href="{% url 'product_view' product.pk %}"><b>Наименование товара: {{ product.name }} </b></a> </h3>
-                <p>Категория: {{ product.get_category_display}} </p>
-                <p>Цена за единицу: <b>{{ product.price }}</b></p>
-                <p>В наличие: {{ product.amount }} шт.</p>
-            </div>
-            <div class="col col-lg-5">
-                <div class="row">
-                    <div class="col col-lg-3 mt-4">
-                        <a href="{% url 'product_update' product.pk %}" ><button type="button"  class="btn btn-success">Update</button></a>
-                    </div>
-                    <div class="coL col-lg-3 mt-4">
-                        <a href="{% url 'product_delete' product.pk %}" ><button type="button"  class="btn btn-danger">Delete</button></a>
-                    </div>
-                    <div class="coL col-lg-3 mt-4">
-                        <a href="{% url 'product_view' product.pk %}" ><button type="button"  class="btn btn-warning"> View </button></a>
-                    </div>
-                </div>
-                <div class="coL col-lg-8 mt-4">
-                    <a href="{% url 'add_to_basket' product.pk %}" >
-                        <button type="button"  class="btn btn-info btn-block">
-                            Add to basket.
-                        </button>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <hr>
-    {% endfor %}
-</form>
-    {% if is_paginated %}
-        {% include 'partial/pagination.html' %}
-    {% endif %}
+    </div>
     <hr>
+{% for product in products_list %}
+    <div class="row">
+        <div class="col col-lg-1">
+            <label>
+                <input class="ml-4" type="checkbox" name="id" value="{{ product.pk }}">
+            </label>
+        </div>
+        <div class="col col-lg-6">
+            <h3><a href="{% url 'product_view' product.pk %}"><b>Наименование товара: {{ product.name }} </b></a> </h3>
+            <p>Категория: {{ product.get_category_display}} </p>
+            <p>Цена за единицу: <b>{{ product.price }}</b></p>
+            <p>В наличие: {{ product.amount }} шт.</p>
+        </div>
+        <div class="col col-lg-5">
+            <div class="row">
+                <div class="col col-lg-3 mt-4">
+                    <a href="{% url 'product_update' product.pk %}" ><button type="button"  class="btn btn-success">Update</button></a>
+                </div>
+                <div class="coL col-lg-3 mt-4">
+                    <a href="{% url 'product_delete' product.pk %}" ><button type="button"  class="btn btn-danger">Delete</button></a>
+                </div>
+                <div class="coL col-lg-3 mt-4">
+                    <a href="{% url 'product_view' product.pk %}" ><button type="button"  class="btn btn-warning"> View </button></a>
+                </div>
+            </div>
+            <form action="{% url 'add_to_basket' product.pk %}" method="POST">
+                {% csrf_token %}
+                <div class="coL col-lg-8 mt-4">
+                    <label >
+                        Qty: <input type="number" name="amount">
+                    </label>
+                    <input type="submit" value="Add to basket">
+                </div>
+            </form>
+        </div>
+    </div>
+    <hr>
+{% endfor %}
+{% if is_paginated %}
+    {% include 'partial/pagination.html' %}
+{% endif %}
+<hr>
 {% endblock %}

@@ -30,7 +30,7 @@
     <hr>
     Total: {{ total }}
     <hr>
-    <div class="row mb-5">
+    <div class="row mb-5 pl-5">
         <form action="{% url 'order_create' %}" method="POST">
         {% csrf_token %}
             Имя: <input type="text" required name="user_name">

@@ -11,22 +11,30 @@ from webapp.models import Product, Basket
 
 class AddToBasket(View):
 
-    def get(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         product = get_object_or_404(Product, pk=self.kwargs.get('pk'))
+        amount = request.POST.get('amount')
+        if amount:
+            amount = int(amount)
+        else:
+            amount = 1
         try:
             basket = Basket.objects.get(product=product)
             if product.amount > 0:
-                if basket.amount < product.amount:
-                    basket.amount += 1
+                if basket.amount + amount < product.amount:
+                    basket.amount += amount
                     basket.save()
                 else:
                     basket.amount = product.amount
                     basket.save()
         except ObjectDoesNotExist:
             basket = Basket.objects.create(product=product)
-            basket.amount = 1
-            basket.save()
-        print(basket)
+            if amount < product.amount:
+                basket.amount = amount
+                basket.save()
+            else:
+                basket.amount = product.amount
+                basket.save()
         return redirect('products')
 
 

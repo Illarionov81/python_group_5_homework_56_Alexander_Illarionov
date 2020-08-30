@@ -14,17 +14,28 @@
         <h1 class="pt-5"><b>Product: {{ product.name }}.
             <a href="{% url 'product_update' product.pk %}" ><button type="button"  class="btn btn-success">Update</button></a>
             <a href="{% url 'product_delete' product.pk %}" ><button type="button"  class="btn btn-danger">Delete. </button></a>
-            <a href="{% url 'add_to_basket' product.pk %}" ><button type="button"  class="btn btn-warning">Add to basket. </button></a>
         </b></h1>
         <h3> Category: <b class="text-primary"> {{ product.category }}</b></h3>
-
         <div class="box">
             <p >Description: </p>
             <hr>
             {{ product.description | linebreaks }}
         </div>
-        <p><b>Amount: </b> {{ product.amount }} | <b> Price: </b> {{ product.price }}</p>
+        <p><b>В наличие: </b> {{ product.amount }} | <b> Цена: </b> {{ product.price }}</p>
     </div>
+    <form action="{% url 'add_to_basket' product.pk %}" method="POST">
+        {% csrf_token %}
+        <div class="row ">
+            <div class="coL mt-4 pl-5">
+                <label >
+                    Qty: <input type="number" name="amount">
+                </label>
+            </div>
+            <div class="coL mt-4">
+                <input type="submit" value="Add to basket">
+            </div>
+        </div>
+    </form>
 </div>
 <hr>
 {% endblock %}
