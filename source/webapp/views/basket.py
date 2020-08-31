@@ -12,10 +12,10 @@ from webapp.models import Product, Basket
 class AddToBasket(View):
 
     def post(self, request, *args, **kwargs):
-        path = request.get_full_path()
+        from_url = request.META.get('HTTP_REFERER', 'products')
         product = get_object_or_404(Product, pk=self.kwargs.get('pk'))
         amount = request.POST.get('amount')
-        print(path)
+        print(from_url)
         if amount:
             amount = int(amount)
         else:
@@ -37,7 +37,7 @@ class AddToBasket(View):
             else:
                 basket.amount = product.amount
                 basket.save()
-        return redirect('products')
+        return redirect(from_url)
 
 
 class BasketView(ListView):

@@ -199,15 +199,15 @@
 },
 {
   "model": "webapp.basket",
-  "pk": 55,
+  "pk": 62,
   "fields": {
-    "product": 23,
-    "amount": 6
+    "product": 2,
+    "amount": 1
   }
 },
 {
   "model": "webapp.basket",
-  "pk": 56,
+  "pk": 63,
   "fields": {
     "product": 24,
     "amount": 5
@@ -215,18 +215,10 @@
 },
 {
   "model": "webapp.basket",
-  "pk": 57,
+  "pk": 64,
   "fields": {
-    "product": 2,
-    "amount": 2
-  }
-},
-{
-  "model": "webapp.basket",
-  "pk": 58,
-  "fields": {
-    "product": 6,
-    "amount": 2
+    "product": 23,
+    "amount": 1
   }
 },
 {
