@@ -199,50 +199,34 @@
 },
 {
   "model": "webapp.basket",
-  "pk": 47,
+  "pk": 55,
   "fields": {
-    "product": 19,
-    "amount": 1500
+    "product": 23,
+    "amount": 6
   }
 },
 {
   "model": "webapp.basket",
-  "pk": 48,
+  "pk": 56,
   "fields": {
-    "product": 4,
-    "amount": 4
+    "product": 24,
+    "amount": 5
   }
 },
 {
   "model": "webapp.basket",
-  "pk": 49,
+  "pk": 57,
   "fields": {
-    "product": 21,
-    "amount": 1
+    "product": 2,
+    "amount": 2
   }
 },
 {
   "model": "webapp.basket",
-  "pk": 50,
-  "fields": {
-    "product": 12,
-    "amount": 1
-  }
-},
-{
-  "model": "webapp.basket",
-  "pk": 51,
+  "pk": 58,
   "fields": {
     "product": 6,
-    "amount": 12
-  }
-},
-{
-  "model": "webapp.basket",
-  "pk": 52,
-  "fields": {
-    "product": 1,
-    "amount": 1
+    "amount": 2
   }
 },
 {
@@ -615,6 +599,51 @@
   }
 },
 {
+  "model": "webapp.productorder",
+  "pk": 42,
+  "fields": {
+    "order": 50,
+    "product": 19,
+    "amount": 1492
+  }
+},
+{
+  "model": "webapp.productorder",
+  "pk": 43,
+  "fields": {
+    "order": 50,
+    "product": 4,
+    "amount": 3
+  }
+},
+{
+  "model": "webapp.productorder",
+  "pk": 44,
+  "fields": {
+    "order": 50,
+    "product": 12,
+    "amount": 2
+  }
+},
+{
+  "model": "webapp.productorder",
+  "pk": 45,
+  "fields": {
+    "order": 50,
+    "product": 6,
+    "amount": 12
+  }
+},
+{
+  "model": "webapp.productorder",
+  "pk": 46,
+  "fields": {
+    "order": 50,
+    "product": 24,
+    "amount": 3
+  }
+},
+{
   "model": "webapp.order",
   "pk": 42,
   "fields": {
@@ -695,11 +724,21 @@
   }
 },
 {
+  "model": "webapp.order",
+  "pk": 50,
+  "fields": {
+    "user_name": "\u041c\u0438\u0442\u044f",
+    "telephone": "564 985 658 5",
+    "address": "\u0412\u043e\u0437\u043d\u0435\u0441\u0435\u043d\u0441\u043a",
+    "created_time": "2020-08-31T07:06:18.890Z"
+  }
+},
+{
   "model": "auth.user",
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$150000$CsyTRATSGM1w$GLgGN1x8eS5rk4IOUbgMALr+MigEx6ymPQ/XdECYOg0=",
-    "last_login": "2020-08-30T14:13:50.206Z",
+    "last_login": "2020-08-31T07:06:33.573Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "",

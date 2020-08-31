@@ -12,8 +12,10 @@ from webapp.models import Product, Basket
 class AddToBasket(View):
 
     def post(self, request, *args, **kwargs):
+        path = request.get_full_path()
         product = get_object_or_404(Product, pk=self.kwargs.get('pk'))
         amount = request.POST.get('amount')
+        print(path)
         if amount:
             amount = int(amount)
         else:
@@ -54,6 +56,20 @@ class BasketView(ListView):
             total += i.product.price * i.amount
         context['total'] = total
         return context
+
+
+class DeleteFromBasketView(View):
+
+    def get(self, request, *args, **kwargs):
+        product = get_object_or_404(Product, pk=self.kwargs.get('pk'))
+        basket = Basket.objects.get(product=product)
+        if basket.amount > 1:
+            basket.amount -= 1
+            basket.save()
+        else:
+            basket.delete()
+        return redirect('basket_view')
+
 
 
 

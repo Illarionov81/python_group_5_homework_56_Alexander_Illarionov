@@ -12,6 +12,7 @@
             <th scope="col">Цена</th>
             <th scope="col">Количество</th>
             <th scope="col">Сумма</th>
+            <th scope="col">Уменьшить</th>
         </tr>
     </thead>
     {% for basket in baskets %}
@@ -22,6 +23,13 @@
             <td>{{ basket.product.price }}</td>
             <td>{{ basket.amount}}</td>
             <td>{{ basket.total }}</td>
+            <td>
+                <div class="coL col-lg-3 mt-1">
+                    <a href="{% url 'basket_delete_view' basket.product.pk %}" >
+                        <button type="button"  class="btn btn-warning"> -1 </button>
+                    </a>
+                </div>
+            </td>
         </tr>
     </tbody>
 
