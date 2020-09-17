@@ -5,7 +5,7 @@ from django.views.generic import ListView
 from django.views.generic.base import View
 
 from webapp.forms import SimpleSearchForm
-from webapp.models import Order, Basket, ProductOrder
+from webapp.models import Order, Basket, ProductOrder, Product
 
 
 class OrderCreate(View):
@@ -18,8 +18,11 @@ class OrderCreate(View):
         order.save()
         for basket in Basket.objects.all():
             ProductOrder.objects.create(product_id=basket.product_id, order_id=order.pk, amount=basket.amount)
-            print(basket.product_id)
-            print(ProductOrder)
+            product = Product.objects.get(pk=basket.product_id)
+            print(product)
+            product.amount -= basket.amount
+            print(product)
+            product.save()
             order.save()
         Basket.objects.all().delete()
         return redirect('products')

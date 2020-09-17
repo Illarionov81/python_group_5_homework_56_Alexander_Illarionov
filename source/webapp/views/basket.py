@@ -18,6 +18,8 @@ class AddToBasket(View):
         print(from_url)
         if amount:
             amount = int(amount)
+            if amount < 0:
+                amount = amount * (-1)
         else:
             amount = 1
         try:
@@ -60,14 +62,20 @@ class BasketView(ListView):
 
 class DeleteFromBasketView(View):
 
-    def get(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         product = get_object_or_404(Product, pk=self.kwargs.get('pk'))
         basket = Basket.objects.get(product=product)
-        if basket.amount > 1:
-            basket.amount -= 1
-            basket.save()
-        else:
-            basket.delete()
+        amount = self.request.POST.get('delete')
+        print(amount)
+        if amount:
+            amount = int(amount)
+            if amount < 0:
+                amount = amount * (-1)
+            if basket.amount > amount:
+                basket.amount -= amount
+                basket.save()
+            else:
+                basket.delete()
         return redirect('basket_view')
 
 
