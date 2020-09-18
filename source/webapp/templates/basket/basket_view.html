@@ -12,7 +12,7 @@
             <th scope="col">Цена</th>
             <th scope="col">Количество</th>
             <th scope="col">Сумма</th>
-            <th scope="col">Уменьшить</th>
+            <th scope="col">Удалить товар из корзины</th>
         </tr>
     </thead>
     {% for basket in baskets %}
@@ -24,15 +24,11 @@
             <td>{{ basket.amount}}</td>
             <td>{{ basket.total }}</td>
             <td>
-                <div class="coL col-lg-3 mt-1">
-                    <form action="{% url 'basket_delete_view' basket.product.pk %}" method="POST">
-                    {% csrf_token %}
-                        <input type="number" name="delete">
-                        <input type="submit" class="btn btn-warning" value="Удалить товар">
-{#                        <button type="button"  class="btn btn-warning"> -1 </button>#}
-{#                    </a>#}
-                    </form>
-                </div>
+                <form action="{% url 'basket_delete_view' basket.product.pk %}" method="POST">
+                {% csrf_token %}
+                    <input type="number" name="delete">
+                    <input type="submit" class="btn btn-warning" value="Удалить">
+                </form>
             </td>
         </tr>
     </tbody>

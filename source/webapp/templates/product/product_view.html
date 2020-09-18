@@ -3,17 +3,19 @@
 {% block title %}View product{% endblock %}
 
 {% block menu %}
-<li class="nav-item px-3">
-    <a class="navbar-brand"  href="{% url 'product_update' product.pk %}" >Редактировать</a>
-</li>
+    <a class="text-white text-center px-3"  href="{% url 'product_update' product.pk %}" >Редактировать</a>
 {% endblock %}
 
 {% block contant %}
 <div class="row">
     <div class="col col-lg-12 text-center">
         <h1 class="pt-5"><b>Product: {{ product.name }}.
+            {% if perms.webapp.change_product %}
             <a href="{% url 'product_update' product.pk %}" ><button type="button"  class="btn btn-success">Update</button></a>
+            {% endif %}
+            {% if perms.webapp.delete_product %}
             <a href="{% url 'product_delete' product.pk %}" ><button type="button"  class="btn btn-danger">Delete. </button></a>
+            {% endif %}
         </b></h1>
         <h3> Category: <b class="text-primary"> {{ product.category }}</b></h3>
         <div class="box">

@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.db.models import Q
 from django.shortcuts import redirect
 from django.urls import reverse, reverse_lazy
@@ -5,12 +6,6 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 
 from webapp.forms import SimpleSearchForm, ProductForm
 from webapp.models import Product
-
-
-def multi_delete(request):
-    data = request.POST.getlist('id')
-    Product.objects.filter(pk__in=data).delete()
-    return redirect('products')
 
 
 class ProductsView(ListView):
@@ -36,28 +31,31 @@ class OneProductView(DetailView):
     model = Product
 
 
-class ProductCreateView(CreateView):
+class ProductCreateView(PermissionRequiredMixin, CreateView):
     model = Product
     template_name = 'product/product_create.html'
     form_class = ProductForm
+    permission_required = 'webapp.add_product'
 
     def get_success_url(self):
         return reverse('product_view', kwargs={'pk': self.object.pk})
 
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(PermissionRequiredMixin, UpdateView):
     model = Product
     template_name = 'product/product_update.html'
     form_class = ProductForm
+    permission_required = 'webapp.change_product'
 
     def get_success_url(self):
         return reverse('product_view', kwargs={'pk': self.object.pk})
 
 
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(PermissionRequiredMixin, DeleteView):
     model = Product
     template_name = 'product/product_delete.html'
     success_url = reverse_lazy('products')
+    permission_required = 'webapp.delete_product'
 
 
 
