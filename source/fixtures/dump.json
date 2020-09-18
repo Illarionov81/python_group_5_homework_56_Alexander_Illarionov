@@ -39,7 +39,7 @@
     "name": "\u0422\u0435\u043b\u0435\u0432\u0438\u0437\u043e\u0440",
     "description": "LCD WIFI Internet  120'",
     "category": "appliances",
-    "amount": 4,
+    "amount": 3,
     "price": "1050.00"
   }
 },
@@ -138,7 +138,7 @@
     "name": "\u0410\u0434\u0430\u043f\u0442\u0435\u0440",
     "description": "~220v  -  ~380v",
     "category": "appliances",
-    "amount": 1500,
+    "amount": 1493,
     "price": "1850.00"
   }
 },
@@ -195,30 +195,6 @@
     "category": "food",
     "amount": 200,
     "price": "40.00"
-  }
-},
-{
-  "model": "webapp.basket",
-  "pk": 62,
-  "fields": {
-    "product": 2,
-    "amount": 1
-  }
-},
-{
-  "model": "webapp.basket",
-  "pk": 63,
-  "fields": {
-    "product": 24,
-    "amount": 5
-  }
-},
-{
-  "model": "webapp.basket",
-  "pk": 64,
-  "fields": {
-    "product": 23,
-    "amount": 1
   }
 },
 {
@@ -636,6 +612,33 @@
   }
 },
 {
+  "model": "webapp.productorder",
+  "pk": 47,
+  "fields": {
+    "order": 51,
+    "product": 19,
+    "amount": 500
+  }
+},
+{
+  "model": "webapp.productorder",
+  "pk": 48,
+  "fields": {
+    "order": 52,
+    "product": 19,
+    "amount": 57
+  }
+},
+{
+  "model": "webapp.productorder",
+  "pk": 49,
+  "fields": {
+    "order": 52,
+    "product": 4,
+    "amount": 1
+  }
+},
+{
   "model": "webapp.order",
   "pk": 42,
   "fields": {
@@ -726,21 +729,53 @@
   }
 },
 {
-  "model": "auth.user",
+  "model": "webapp.order",
+  "pk": 51,
+  "fields": {
+    "user_name": "Sasha",
+    "telephone": "0700 980578",
+    "address": "Bishkek 4 dictrict",
+    "created_time": "2020-09-17T16:21:44.709Z"
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 52,
+  "fields": {
+    "user_name": "Sasha",
+    "telephone": "0700 980578",
+    "address": "Bishkek 4 dictrict",
+    "created_time": "2020-09-18T16:22:58.860Z"
+  }
+},
+{
+  "model": "accounts.profile",
   "pk": 1,
   "fields": {
-    "password": "pbkdf2_sha256$150000$CsyTRATSGM1w$GLgGN1x8eS5rk4IOUbgMALr+MigEx6ymPQ/XdECYOg0=",
-    "last_login": "2020-08-31T07:06:33.573Z",
-    "is_superuser": true,
-    "username": "admin",
-    "first_name": "",
-    "last_name": "",
-    "email": "",
-    "is_staff": true,
-    "is_active": true,
-    "date_joined": "2020-07-30T14:37:06.692Z",
-    "groups": [],
-    "user_permissions": []
+    "user": 1,
+    "git_hub": "https://github.com/Illarionov81",
+    "avatar": "user_pics/Huck.jpeg",
+    "about_me": "Admin"
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 2,
+  "fields": {
+    "user": 2,
+    "git_hub": null,
+    "avatar": "",
+    "about_me": null
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 3,
+  "fields": {
+    "user": 3,
+    "git_hub": "https://github.com/Illarionov81",
+    "avatar": "user_pics/enot.jpg",
+    "about_me": "Moderator"
   }
 }
 ]
