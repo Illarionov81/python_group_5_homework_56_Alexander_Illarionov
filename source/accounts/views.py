@@ -7,6 +7,8 @@ from django.views.generic import DetailView, ListView, UpdateView
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
 from django.core.paginator import Paginator
+from django.contrib.auth.views import LoginView
+from webapp.models import Basket
 
 from accounts.forms import MyUserCreationForm,  ProfileChangeForm
 from django.views.generic import CreateView
@@ -142,6 +144,23 @@ class UserChangeView(UserPassesTestMixin, UpdateView):
     def get_success_url(self):
         return reverse('accounts:detail', kwargs={'pk': self.object.pk})
 
+
+class LoginViewSession(LoginView):
+    def form_valid(self, form):
+        session = self.request.session.session_key
+        baskets =[]
+        if session:
+            basket = Basket.objects.filter(session=session).values('product', 'amount')
+            for i in basket:
+                baskets.append(i)
+
+        form_valid = super().form_valid(form)
+        session = self.request.session.session_key
+        for i in baskets:
+            print(i)
+            Basket.objects.create(session_id=session, product_id=i['product'], amount=i['amount'])
+
+        return form_valid
 
 
 

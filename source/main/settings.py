@@ -131,3 +131,5 @@ LOGIN_URL = "accounts:login"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 MEDIA_URL = '/uploads/'
+
+# SESSION_SAVE_EVERY_REQUEST = True

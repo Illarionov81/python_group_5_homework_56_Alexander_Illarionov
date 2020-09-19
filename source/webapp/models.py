@@ -1,5 +1,6 @@
 from django.core.validators import MinValueValidator
 from django.db import models
+from django.contrib.sessions.models import Session
 
 DEFAULT_CATEGORY = 'other'
 CATEGORY_CHOICES = (
@@ -30,6 +31,8 @@ class Product(models.Model):
 class Basket(models.Model):
     product = models.ForeignKey('webapp.Product', related_name='product', on_delete=models.CASCADE, verbose_name='Продукт')
     amount = models.IntegerField(null=True, verbose_name='Количество')
+    session = models.ForeignKey(Session, blank=True, null=True, related_name='basket', on_delete=models.CASCADE,
+                                verbose_name='Сессия')
 
     class Meta:
         verbose_name = 'Корзина'

@@ -1,3 +1,4 @@
+from django.contrib.sessions.models import Session
 from django.db.models import Count, Sum, FloatField, F
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
@@ -12,6 +13,9 @@ from webapp.models import Product, Basket
 class AddToBasket(View):
 
     def post(self, request, *args, **kwargs):
+        if not self.request.session.session_key:
+            self.request.session.save()
+        session = Session.objects.get(session_key=self.request.session.session_key)
         from_url = request.META.get('HTTP_REFERER', 'products')
         product = get_object_or_404(Product, pk=self.kwargs.get('pk'))
         amount = request.POST.get('amount')
@@ -23,22 +27,27 @@ class AddToBasket(View):
         else:
             amount = 1
         try:
-            basket = Basket.objects.get(product=product)
+            basket = Basket.objects.get(product=product, session_id=session.session_key)
             if product.amount > 0:
                 if basket.amount + amount < product.amount:
                     basket.amount += amount
+                    basket.session_id = session.pk
                     basket.save()
                 else:
                     basket.amount = product.amount
+                    basket.session_id = session.pk
                     basket.save()
         except ObjectDoesNotExist:
-            basket = Basket.objects.create(product=product)
+            basket = Basket.objects.create(product=product, session_id=session.session_key)
             if amount < product.amount:
                 basket.amount = amount
+                basket.session_id = session.pk
                 basket.save()
             else:
                 basket.amount = product.amount
+                basket.session_id = session.pk
                 basket.save()
+        session.save()
         return redirect(from_url)
 
 
@@ -46,15 +55,21 @@ class BasketView(ListView):
     template_name = 'basket/basket_view.html'
     model = Basket
 
+    # def get_session_key(self):
+    #     session = self.request.session
+    #     if not session.session_key:
+    #         session.save()
+    #     return session.session_key
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         baskets = []
-        for i in Basket.objects.all():
+        for i in Basket.objects.filter(session_id=self.request.session.session_key):
             baskets.append({'total': i.product.price * i.amount,
                             'product': i.product, 'amount': i.amount, 'pk': i.pk})
         context['baskets'] = baskets
         total = 0
-        for i in Basket.objects.all():
+        for i in Basket.objects.filter(session_id=self.request.session.session_key):
             total += i.product.price * i.amount
         context['total'] = total
         return context
