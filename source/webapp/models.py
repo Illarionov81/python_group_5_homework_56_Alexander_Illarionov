@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.core.validators import MinValueValidator
 from django.db import models
 from django.contrib.sessions.models import Session
@@ -55,6 +56,7 @@ class Order(models.Model):
     telephone = models.CharField(max_length=100, null=False, blank=False, verbose_name='Телефон')
     address = models.CharField(max_length=200, null=False, blank=False, verbose_name='Адресс')
     created_time = models.DateTimeField(auto_now_add=True, verbose_name='Время создания')
+    user = models.ForeignKey(get_user_model(), null=True, blank=True, on_delete=models.CASCADE, verbose_name='User')
 
     class Meta:
         verbose_name = 'Заказ'

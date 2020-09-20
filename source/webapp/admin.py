@@ -25,7 +25,7 @@ class ProductOrderInLine(admin.TabularInline):
 class OrderAdmin(admin.ModelAdmin):
     inlines = (ProductOrderInLine,)
     list_filter = ('user_name',)
-    list_display = ('pk', 'user_name', 'telephone', 'address', 'created_time')
+    list_display = ('pk', 'user_name', 'telephone', 'address', 'created_time', 'user')
     list_display_links = ('pk', 'user_name',)
     ordering = ('-created_time',)
 

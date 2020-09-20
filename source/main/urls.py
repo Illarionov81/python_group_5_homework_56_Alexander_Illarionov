@@ -20,7 +20,7 @@ from django.urls import path, include
 
 from webapp.views import ProductsView, OneProductView, ProductCreateView, ProductUpdateView, \
     ProductDeleteView, AddToBasket, BasketView, DeleteFromBasketView
-from webapp.views.order import OrderCreate
+from webapp.views.order import OrderCreate, OrderView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -38,4 +38,5 @@ urlpatterns = [
     path('basket/delete/<int:pk>/', DeleteFromBasketView.as_view(), name='basket_delete_view'),
 
     path('order/create/', OrderCreate.as_view(), name='order_create'),
+    path('order/view', OrderView.as_view(), name='order_view')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

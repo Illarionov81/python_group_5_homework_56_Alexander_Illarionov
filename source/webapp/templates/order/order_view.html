@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Products in Basket: {% endblock %}
+
+{% block contant %}
+    <hr>
+    <h4>Ваш Заказ, {{ request.user }}.</h4>
+<table class="table mt-5">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Наименование</th>
+            <th scope="col">Цена</th>
+            <th scope="col">Количество</th>
+            <th scope="col">Сумма</th>
+        </tr>
+    </thead>
+    {% for product in products %}
+    <tbody>
+        <tr>
+            <th scope="row">{{ product.pk }}</th>
+            <td>{{ product.product.name }}</td>
+            <td>{{ product.product.price }}</td>
+            <td>{{ product.amount}}</td>
+            <td>{{ product.total }}</td>
+        </tr>
+    </tbody>
+    {% endfor %}
+</table>
+    <hr>
+    Total: {{ total }}
+    <hr>
+{% endblock %}

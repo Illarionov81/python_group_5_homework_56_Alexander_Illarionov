@@ -8,6 +8,8 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from webapp.forms import BasketForm, OrderForm
 from webapp.models import Product, Basket
+from django.contrib import messages
+
 
 
 class AddToBasket(View):
@@ -33,20 +35,37 @@ class AddToBasket(View):
                     basket.amount += amount
                     basket.session_id = session.pk
                     basket.save()
+                    messages.add_message(self.request, messages.SUCCESS, 'Товар успешно добавлен в корзину!'
+                                                                         ' Добавленно %s шт.' % amount)
                 else:
+                    add = product.amount - basket.amount
                     basket.amount = product.amount
                     basket.session_id = session.pk
                     basket.save()
+                    if add > 0:
+                        messages.add_message(self.request, messages.WARNING, 'К сожалению это последний '
+                                                                            ' товар на складе! Добавленно '
+                                                                           '%s шт.' % add)
+                    else:
+                        messages.add_message(self.request, messages.ERROR, 'К сожалению это последний '
+                                                                             ' товар на складе! Добавленно '
+                                                                             '%s шт.' % add)
+
         except ObjectDoesNotExist:
             basket = Basket.objects.create(product=product, session_id=session.session_key)
             if amount < product.amount:
                 basket.amount = amount
                 basket.session_id = session.pk
                 basket.save()
+                messages.add_message(self.request, messages.SUCCESS, 'Товар успешно добавлен в корзину!'
+                                                                     ' Добавленно %s шт.' % amount)
             else:
+                add = product.amount
                 basket.amount = product.amount
                 basket.session_id = session.pk
                 basket.save()
+                messages.add_message(self.request, messages.ERROR, 'К сожалению это последний '
+                                                                     ' товар на складе! Добавленно %s шт.' % add)
         session.save()
         return redirect(from_url)
 
@@ -54,12 +73,6 @@ class AddToBasket(View):
 class BasketView(ListView):
     template_name = 'basket/basket_view.html'
     model = Basket
-
-    # def get_session_key(self):
-    #     session = self.request.session
-    #     if not session.session_key:
-    #         session.save()
-    #     return session.session_key
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -80,6 +93,7 @@ class DeleteFromBasketView(View):
     def post(self, request, *args, **kwargs):
         product = get_object_or_404(Product, pk=self.kwargs.get('pk'))
         basket = Basket.objects.get(product=product)
+        context = {'basket': basket}
         amount = self.request.POST.get('delete')
         print(amount)
         if amount:
@@ -89,8 +103,14 @@ class DeleteFromBasketView(View):
             if basket.amount > amount:
                 basket.amount -= amount
                 basket.save()
+                messages.add_message(self.request, messages.WARNING, 'Количество товара уменьшенно на %s шт.' % amount)
             else:
                 basket.delete()
+                messages.add_message(self.request, messages.WARNING, 'Товар успешно удален из корзины!'
+                                                                     ' В количестве %s шт.' % basket.amount)
+        else:
+            messages.add_message(self.request, messages.ERROR, 'Что то пошло не так!'
+                                                               ' Возможно Вы забыли указать количество.')
         return redirect('basket_view')
 
 
