@@ -17,7 +17,7 @@
     "name": "\u0421\u043e\u043a",
     "description": "\u0418\u0437 \u043d\u0430\u0442\u0443\u0440\u0430\u043b\u044c\u043d\u044b\u0445 \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u043e\u0432",
     "category": "food",
-    "amount": 20,
+    "amount": 18,
     "price": "50.00"
   }
 },
@@ -28,7 +28,7 @@
     "name": "\u041a\u0440\u0430\u043d",
     "description": "\u0411\u0430\u0448\u0435\u043d\u043d\u044b\u0439 \u043a\u0440\u0430\u043d \u0434\u043b\u044f \u0434\u0435\u0442\u0435\u0439 \u0441\u0442\u0430\u0440\u0448\u0435 1 \u0433\u043e\u0434\u0430",
     "category": "toys",
-    "amount": 5,
+    "amount": 4,
     "price": "120.00"
   }
 },
@@ -39,7 +39,7 @@
     "name": "\u0422\u0435\u043b\u0435\u0432\u0438\u0437\u043e\u0440",
     "description": "LCD WIFI Internet  120'",
     "category": "appliances",
-    "amount": 3,
+    "amount": 0,
     "price": "1050.00"
   }
 },
@@ -50,7 +50,7 @@
     "name": "\u043c\u0443\u0445\u043e\u0431\u043e\u0439\u043a\u0430",
     "description": "\u043e\u0442\u043b\u0438\u0447\u043d\u044b\u0439 \u0434\u0435\u0432\u0430\u0439\u0441 \u0434\u043b\u044f \u0442\u0440\u0435\u043d\u0438\u0440\u043e\u0432\u043a\u0438 \u0441\u043a\u043e\u0440\u043e\u0441\u0442\u0438 \u0438 \u043c\u0435\u0442\u043a\u043e\u0441\u0442\u0438",
     "category": "other",
-    "amount": 1,
+    "amount": 0,
     "price": "35.00"
   }
 },
@@ -105,7 +105,7 @@
     "name": "\u041d\u0430\u0441\u0442\u043e\u043b\u044c\u043d\u0430\u044f \u043b\u0430\u043c\u043f\u0430",
     "description": "\u0421\u0432\u0435\u0442\u043e\u0434\u0438\u043e\u0434\u043d\u0430\u044f \u043d\u0430\u0441\u0442\u043e\u043b\u044c\u043d\u0430\u044f \u043b\u0430\u043c\u043f\u0430\r\n5w\r\ncollor - wite",
     "category": "other",
-    "amount": 5,
+    "amount": 3,
     "price": "580.00"
   }
 },
@@ -127,7 +127,7 @@
     "name": "\u0422\u0435\u043b\u0435\u0444\u043e\u043d",
     "description": "\u0422\u0435\u043b\u0435\u0444\u043e\u043d \u043d\u0430\u0441\u0442\u043e\u043b\u044c\u043d\u044b\u0439 \u043f\u0440\u043e\u0432\u043e\u0434\u043d\u043e\u0439",
     "category": "appliances",
-    "amount": 7,
+    "amount": 6,
     "price": "680.00"
   }
 },
@@ -138,7 +138,7 @@
     "name": "\u0410\u0434\u0430\u043f\u0442\u0435\u0440",
     "description": "~220v  -  ~380v",
     "category": "appliances",
-    "amount": 1493,
+    "amount": 1486,
     "price": "1850.00"
   }
 },
@@ -182,7 +182,7 @@
     "name": "\u0421\u0435\u043b\u0435\u0434\u043a\u0430",
     "description": "\u0421\u0435\u043b\u044c\u0434\u044c \u0442\u0438\u0445\u043e\u043e\u043a\u0435\u0430\u043d\u0441\u043a\u0430\u044f \u0441\u043e\u043b\u0451\u043d\u0430\u044f \u0432 \u043f\u0440\u0435\u0441\u0435\u0440\u0432\u0435.\r\n\r\n1200\u0433\u0440.",
     "category": "food",
-    "amount": 26,
+    "amount": 24,
     "price": "280.00"
   }
 },
@@ -193,8 +193,17 @@
     "name": "\u0421\u0430\u0445\u0430\u0440",
     "description": "\u0420\u0430\u0441\u0441\u044b\u043f\u043d\u043e\u0439",
     "category": "food",
-    "amount": 200,
+    "amount": 160,
     "price": "40.00"
+  }
+},
+{
+  "model": "webapp.basket",
+  "pk": 119,
+  "fields": {
+    "product": 19,
+    "amount": 1486,
+    "session": "9zaqg2dknfgvwu72jlyxmmlp0xdcfbs3"
   }
 },
 {
@@ -639,113 +648,227 @@
   }
 },
 {
-  "model": "webapp.order",
-  "pk": 42,
-  "fields": {
-    "user_name": "Sasha",
-    "telephone": "0700 980578",
-    "address": "Bishkek 4 dictrict",
-    "created_time": "2020-08-30T12:39:52.927Z"
-  }
-},
-{
-  "model": "webapp.order",
-  "pk": 43,
-  "fields": {
-    "user_name": "\u0414\u0438\u043c\u0430",
-    "telephone": "07070070707",
-    "address": "11 \u043c\u043a\u0440",
-    "created_time": "2020-08-30T14:36:21.536Z"
-  }
-},
-{
-  "model": "webapp.order",
-  "pk": 44,
-  "fields": {
-    "user_name": "Max",
-    "telephone": "00100100110",
-    "address": "Sity",
-    "created_time": "2020-08-30T16:59:42.493Z"
-  }
-},
-{
-  "model": "webapp.order",
-  "pk": 45,
-  "fields": {
-    "user_name": "Virginiya",
-    "telephone": "700700770077",
-    "address": "Unated States",
-    "created_time": "2020-08-30T17:23:03.050Z"
-  }
-},
-{
-  "model": "webapp.order",
-  "pk": 46,
-  "fields": {
-    "user_name": "Gary",
-    "telephone": "+78822656525",
-    "address": "Magadan",
-    "created_time": "2020-08-30T17:25:42.597Z"
-  }
-},
-{
-  "model": "webapp.order",
-  "pk": 47,
-  "fields": {
-    "user_name": "\u042d\u043b\u0435\u043a\u0442\u0440\u043e",
-    "telephone": "22038010000",
-    "address": "Station",
-    "created_time": "2020-08-30T17:36:44.598Z"
-  }
-},
-{
-  "model": "webapp.order",
-  "pk": 48,
-  "fields": {
-    "user_name": "\u041f\u0430\u043f\u0430",
-    "telephone": "0700 980578",
-    "address": "Bishkek 4 dictrict",
-    "created_time": "2020-08-30T17:43:06.108Z"
-  }
-},
-{
-  "model": "webapp.order",
-  "pk": 49,
-  "fields": {
-    "user_name": "\u041c\u0430\u0440\u0438\u044f",
-    "telephone": "0233554",
-    "address": "\u0421\u0443\u043a\u0443\u043b\u0443\u043a",
-    "created_time": "2020-08-30T17:50:10.510Z"
-  }
-},
-{
-  "model": "webapp.order",
+  "model": "webapp.productorder",
   "pk": 50,
   "fields": {
-    "user_name": "\u041c\u0438\u0442\u044f",
-    "telephone": "564 985 658 5",
-    "address": "\u0412\u043e\u0437\u043d\u0435\u0441\u0435\u043d\u0441\u043a",
-    "created_time": "2020-08-31T07:06:18.890Z"
+    "order": 53,
+    "product": 4,
+    "amount": 1
   }
 },
 {
-  "model": "webapp.order",
+  "model": "webapp.productorder",
   "pk": 51,
   "fields": {
-    "user_name": "Sasha",
-    "telephone": "0700 980578",
-    "address": "Bishkek 4 dictrict",
-    "created_time": "2020-09-17T16:21:44.709Z"
+    "order": 54,
+    "product": 4,
+    "amount": 1
+  }
+},
+{
+  "model": "webapp.productorder",
+  "pk": 52,
+  "fields": {
+    "order": 54,
+    "product": 19,
+    "amount": 1
+  }
+},
+{
+  "model": "webapp.productorder",
+  "pk": 53,
+  "fields": {
+    "order": 54,
+    "product": 24,
+    "amount": 10
+  }
+},
+{
+  "model": "webapp.productorder",
+  "pk": 54,
+  "fields": {
+    "order": 54,
+    "product": 19,
+    "amount": 1
+  }
+},
+{
+  "model": "webapp.productorder",
+  "pk": 55,
+  "fields": {
+    "order": 55,
+    "product": 19,
+    "amount": 1
+  }
+},
+{
+  "model": "webapp.productorder",
+  "pk": 56,
+  "fields": {
+    "order": 55,
+    "product": 4,
+    "amount": 1
+  }
+},
+{
+  "model": "webapp.productorder",
+  "pk": 57,
+  "fields": {
+    "order": 56,
+    "product": 19,
+    "amount": 2
+  }
+},
+{
+  "model": "webapp.productorder",
+  "pk": 58,
+  "fields": {
+    "order": 57,
+    "product": 19,
+    "amount": 1
+  }
+},
+{
+  "model": "webapp.productorder",
+  "pk": 59,
+  "fields": {
+    "order": 57,
+    "product": 12,
+    "amount": 1
+  }
+},
+{
+  "model": "webapp.productorder",
+  "pk": 60,
+  "fields": {
+    "order": 57,
+    "product": 23,
+    "amount": 1
+  }
+},
+{
+  "model": "webapp.productorder",
+  "pk": 61,
+  "fields": {
+    "order": 57,
+    "product": 2,
+    "amount": 1
+  }
+},
+{
+  "model": "webapp.productorder",
+  "pk": 62,
+  "fields": {
+    "order": 58,
+    "product": 5,
+    "amount": 1
+  }
+},
+{
+  "model": "webapp.productorder",
+  "pk": 63,
+  "fields": {
+    "order": 58,
+    "product": 10,
+    "amount": 1
+  }
+},
+{
+  "model": "webapp.productorder",
+  "pk": 64,
+  "fields": {
+    "order": 59,
+    "product": 19,
+    "amount": 1
+  }
+},
+{
+  "model": "webapp.productorder",
+  "pk": 65,
+  "fields": {
+    "order": 59,
+    "product": 23,
+    "amount": 1
+  }
+},
+{
+  "model": "webapp.productorder",
+  "pk": 66,
+  "fields": {
+    "order": 59,
+    "product": 2,
+    "amount": 1
+  }
+},
+{
+  "model": "webapp.productorder",
+  "pk": 67,
+  "fields": {
+    "order": 59,
+    "product": 10,
+    "amount": 1
+  }
+},
+{
+  "model": "webapp.productorder",
+  "pk": 68,
+  "fields": {
+    "order": 59,
+    "product": 3,
+    "amount": 1
+  }
+},
+{
+  "model": "webapp.productorder",
+  "pk": 69,
+  "fields": {
+    "order": 60,
+    "product": 24,
+    "amount": 30
   }
 },
 {
   "model": "webapp.order",
-  "pk": 52,
+  "pk": 57,
   "fields": {
     "user_name": "Sasha",
     "telephone": "0700 980578",
     "address": "Bishkek 4 dictrict",
-    "created_time": "2020-09-18T16:22:58.860Z"
+    "created_time": "2020-09-20T16:20:08.832Z",
+    "user": 2
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 58,
+  "fields": {
+    "user_name": "Admin",
+    "telephone": "0700 980578",
+    "address": "Bishkek 4 dictrict",
+    "created_time": "2020-09-20T17:40:21.342Z",
+    "user": 1
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 59,
+  "fields": {
+    "user_name": "zfbvsd",
+    "telephone": "0700 980578",
+    "address": "Bishkek 4 dictrict",
+    "created_time": "2020-09-20T17:56:10.469Z",
+    "user": null
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 60,
+  "fields": {
+    "user_name": "Sasha",
+    "telephone": "0700 980578",
+    "address": "Bishkek 4 dictrict",
+    "created_time": "2020-09-20T17:58:05.707Z",
+    "user": 3
   }
 },
 {
