@@ -198,15 +198,6 @@
   }
 },
 {
-  "model": "webapp.basket",
-  "pk": 119,
-  "fields": {
-    "product": 19,
-    "amount": 1486,
-    "session": "9zaqg2dknfgvwu72jlyxmmlp0xdcfbs3"
-  }
-},
-{
   "model": "webapp.productorder",
   "pk": 1,
   "fields": {

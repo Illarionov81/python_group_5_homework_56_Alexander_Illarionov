@@ -43,16 +43,25 @@ class OrderView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        total = 0
-        products = []
+        order_n = []
+        total_n = []
+        # products = []
         orders = Order.objects.filter(user_id=self.request.user.pk)
         for order in orders.values_list('pk'):
+            products = []
+            total = 0
             for i in ProductOrder.objects.filter(order_id=order):
                 products.append({'total': i.product.price * i.amount,
                                 'product': i.product, 'amount': i.amount, 'pk': i.pk})
-                context['products'] = products
+                # context['products'] = products
                 total += i.product.price * i.amount
-        context['total'] = total
+            # context['total'] = total
+            order_n.append((products, total),)
+            total_n.append(total)
+        context['total_n'] = total_n
+        context['order_n'] = order_n
+        print(order_n)
+        print(total_n)
         return context
 
 

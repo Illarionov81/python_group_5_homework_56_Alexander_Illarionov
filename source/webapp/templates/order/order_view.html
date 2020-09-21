@@ -3,9 +3,10 @@
 {% block title %}Products in Basket: {% endblock %}
 
 {% block contant %}
-    <hr>
-    <h4>Ваш Заказ, {{ request.user }}.</h4>
-<table class="table mt-5">
+{% for products, total in order_n %}
+     <h4 class="mt-5">Ваш Заказ № {{ forloop.counter }}, {{ request.user }}.</h4>
+
+<table class="table mt-1">
     <thead>
         <tr>
             <th scope="col">#</th>
@@ -25,9 +26,11 @@
             <td>{{ product.total }}</td>
         </tr>
     </tbody>
-    {% endfor %}
+        {% endfor %}
 </table>
-    <hr>
-    Total: {{ total }}
-    <hr>
+
+     <hr>
+         Total : {{ total }}
+     <hr>
+    {% endfor %}
 {% endblock %}
