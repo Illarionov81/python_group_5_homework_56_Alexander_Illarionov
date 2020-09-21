@@ -198,6 +198,72 @@
   }
 },
 {
+  "model": "webapp.order",
+  "pk": 57,
+  "fields": {
+    "user_name": "Sasha",
+    "telephone": "0700 980578",
+    "address": "Bishkek 4 dictrict",
+    "created_time": "2020-09-20T16:20:08.832Z",
+    "user": 2
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 58,
+  "fields": {
+    "user_name": "Admin",
+    "telephone": "0700 980578",
+    "address": "Bishkek 4 dictrict",
+    "created_time": "2020-09-20T17:40:21.342Z",
+    "user": 1
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 59,
+  "fields": {
+    "user_name": "zfbvsd",
+    "telephone": "0700 980578",
+    "address": "Bishkek 4 dictrict",
+    "created_time": "2020-09-20T17:56:10.469Z",
+    "user": null
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 60,
+  "fields": {
+    "user_name": "Sasha",
+    "telephone": "0700 980578",
+    "address": "Bishkek 4 dictrict",
+    "created_time": "2020-09-20T17:58:05.707Z",
+    "user": 3
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 61,
+  "fields": {
+    "user_name": "Sasha",
+    "telephone": "0700 980578",
+    "address": "Bishkek 4 dictrict",
+    "created_time": "2020-09-21T07:49:48.140Z",
+    "user": 3
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 62,
+  "fields": {
+    "user_name": "Sasha",
+    "telephone": "0700 980578",
+    "address": "Bishkek 4 dictrict",
+    "created_time": "2020-09-21T10:02:09.013Z",
+    "user": 3
+  }
+},
+{
   "model": "webapp.productorder",
   "pk": 1,
   "fields": {
@@ -861,72 +927,6 @@
     "order": 62,
     "product": 3,
     "amount": 1
-  }
-},
-{
-  "model": "webapp.order",
-  "pk": 57,
-  "fields": {
-    "user_name": "Sasha",
-    "telephone": "0700 980578",
-    "address": "Bishkek 4 dictrict",
-    "created_time": "2020-09-20T16:20:08.832Z",
-    "user": 2
-  }
-},
-{
-  "model": "webapp.order",
-  "pk": 58,
-  "fields": {
-    "user_name": "Admin",
-    "telephone": "0700 980578",
-    "address": "Bishkek 4 dictrict",
-    "created_time": "2020-09-20T17:40:21.342Z",
-    "user": 1
-  }
-},
-{
-  "model": "webapp.order",
-  "pk": 59,
-  "fields": {
-    "user_name": "zfbvsd",
-    "telephone": "0700 980578",
-    "address": "Bishkek 4 dictrict",
-    "created_time": "2020-09-20T17:56:10.469Z",
-    "user": null
-  }
-},
-{
-  "model": "webapp.order",
-  "pk": 60,
-  "fields": {
-    "user_name": "Sasha",
-    "telephone": "0700 980578",
-    "address": "Bishkek 4 dictrict",
-    "created_time": "2020-09-20T17:58:05.707Z",
-    "user": 3
-  }
-},
-{
-  "model": "webapp.order",
-  "pk": 61,
-  "fields": {
-    "user_name": "Sasha",
-    "telephone": "0700 980578",
-    "address": "Bishkek 4 dictrict",
-    "created_time": "2020-09-21T07:49:48.140Z",
-    "user": 3
-  }
-},
-{
-  "model": "webapp.order",
-  "pk": 62,
-  "fields": {
-    "user_name": "Sasha",
-    "telephone": "0700 980578",
-    "address": "Bishkek 4 dictrict",
-    "created_time": "2020-09-21T10:02:09.013Z",
-    "user": 3
   }
 },
 {

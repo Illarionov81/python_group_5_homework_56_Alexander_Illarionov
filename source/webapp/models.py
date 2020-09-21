@@ -40,15 +40,6 @@ class Basket(models.Model):
         verbose_name_plural = 'Корзины'
 
 
-class ProductOrder(models.Model):
-    order = models.ForeignKey('webapp.Order', related_name='order_product', on_delete=models.CASCADE, verbose_name='Заказ')
-    product = models.ForeignKey('webapp.Product', related_name='product_order', on_delete=models.CASCADE, verbose_name='Товар')
-    amount = models.IntegerField(verbose_name='Количество')
-
-    def __str__(self):
-        return "{} | {}".format(self.order, self.product)
-
-
 class Order(models.Model):
     product = models.ManyToManyField('webapp.Product', related_name='order', through='webapp.ProductOrder',
                                      through_fields=('order', 'product'), blank=True)
@@ -61,3 +52,12 @@ class Order(models.Model):
     class Meta:
         verbose_name = 'Заказ'
         verbose_name_plural = 'Заказы'
+
+
+class ProductOrder(models.Model):
+    order = models.ForeignKey('webapp.Order', related_name='order_product', on_delete=models.CASCADE, verbose_name='Заказ')
+    product = models.ForeignKey('webapp.Product', related_name='product_order', on_delete=models.CASCADE, verbose_name='Товар')
+    amount = models.IntegerField(verbose_name='Количество')
+
+    def __str__(self):
+        return "{} | {}".format(self.order, self.product)
