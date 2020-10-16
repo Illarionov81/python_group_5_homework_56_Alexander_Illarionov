@@ -26,6 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('accounts/', include('accounts.urls')),
+    path('api/v1/', include('api_v1.urls')),
 
     path('', ProductsView.as_view(), name='products'),
     path('product/<int:pk>/', OneProductView.as_view(), name='product_view'),
