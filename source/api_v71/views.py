@@ -3,8 +3,8 @@ from django.http import HttpResponse, HttpResponseNotAllowed, JsonResponse
 from django.views.decorators.csrf import ensure_csrf_cookie
 from rest_framework.response import Response
 from rest_framework import viewsets
-from webapp.models import Product
-from api_v71.serializers import ProductSerializer
+from webapp.models import Product, Order
+from api_v71.serializers import ProductSerializer, OrderSerializer
 
 
 @ensure_csrf_cookie
@@ -19,5 +19,8 @@ class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
 
 
+class OrderViewSet(viewsets.ModelViewSet):
+   queryset = Order.objects.all()
+   serializer_class = OrderSerializer
 
 
