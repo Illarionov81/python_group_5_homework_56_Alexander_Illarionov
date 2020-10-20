@@ -39,5 +39,8 @@ urlpatterns = [
     path('basket/delete/<int:pk>/', DeleteFromBasketView.as_view(), name='basket_delete_view'),
 
     path('order/create/', OrderCreate.as_view(), name='order_create'),
-    path('order/view', OrderView.as_view(), name='order_view')
+    path('order/view', OrderView.as_view(), name='order_view'),
+
+    path('api/v71/', include('api_v71.urls')),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

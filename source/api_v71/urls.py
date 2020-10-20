@@ -1,9 +1,15 @@
-from django.urls import path
-
 from api_v1.views import get_token_view
+from django.urls import include, path
+from rest_framework import routers
+from api_v71 import views
 
-app_name = 'api_v1'
+router = routers.DefaultRouter()
+router.register(r'products', views.ProductViewSet)
+
+app_name = 'api_v2'
 
 urlpatterns = [
+    path('', include(router.urls)),
     path('get_token/', get_token_view, name='get_token'),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
