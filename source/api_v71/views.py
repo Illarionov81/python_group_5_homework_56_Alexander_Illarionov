@@ -24,11 +24,11 @@ class ProductViewSet(ViewSet):
 
     def list(self, request):
         products = Product.objects.all()
-        srl = ProductSerializer(products, many=True)
+        srl = ProductSerializer(products, many=True, context={'request': request})
         return Response(srl.data)
 
     def create(self, request):
-        srl = ProductSerializer(data=request.data)
+        srl = ProductSerializer(data=request.data, context={'request': request})
         if srl.is_valid():
             product = srl.save()
             return Response(srl.data)
@@ -36,13 +36,13 @@ class ProductViewSet(ViewSet):
             return Response(srl.errors, status=400)
 
     def retrieve(self, request, pk=None):
-        product = get_object_or_404(Product, pk=pk)
+        product = get_object_or_404(Product, pk=pk, context={'request': request})
         srl = ProductSerializer(product)
         return Response(srl.data)
 
     def update(self, request, pk=None):
         product = get_object_or_404(Product, pk=pk)
-        srl = ProductSerializer(data=request.data, instance=product)
+        srl = ProductSerializer(data=request.data, instance=product, context={'request': request})
         if srl.is_valid():
             product = srl.save()
             return Response(srl.data)
@@ -53,7 +53,7 @@ class ProductViewSet(ViewSet):
         pass
 
     def destroy(self, request, pk=None):
-        product = get_object_or_404(Product, pk=pk)
+        product = get_object_or_404(Product, pk=pk, context={'request': request})
         product.delete()
         return Response({'pk': pk})
 
@@ -69,11 +69,11 @@ class OrderViewSet(ViewSet):
 
     def list(self, request):
         orders = Order.objects.all()
-        srl = OrderSerializer(orders, many=True)
+        srl = OrderSerializer(orders, many=True, context={'request': request})
         return Response(srl.data)
 
     def create(self, request):
-        srl = OrderSerializer(data=request.data)
+        srl = OrderSerializer(data=request.data, context={'request': request})
         if srl.is_valid():
             order = srl.save()
             return Response(srl.data)
@@ -81,6 +81,6 @@ class OrderViewSet(ViewSet):
             return Response(srl.errors, status=400)
 
     def retrieve(self, request, pk=None):
-        order = get_object_or_404(Order, pk=pk)
+        order = get_object_or_404(Order, pk=pk, context={'request': request})
         srl = OrderSerializer(order)
         return Response(srl.data)
