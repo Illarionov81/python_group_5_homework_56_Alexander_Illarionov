@@ -22,7 +22,6 @@ def get_token_view(request, *args, **kwargs):
 
 class ProductViewSet(ViewSet):
     queryset = Product.objects.all()
-    permission_classes = [IsAuthenticatedOrReadOnly]
 
     def get_permissions(self):
         if self.request.method not in SAFE_METHODS:
@@ -73,6 +72,11 @@ class ProductViewSet(ViewSet):
 
 class OrderViewSet(ViewSet):
     queryset = Order.objects.all()
+
+    def get_permissions(self):
+        if self.request.method in SAFE_METHODS:
+            return [IsAdminUser()]
+        return super().get_permissions()
 
     def list(self, request):
         orders = Order.objects.all()
