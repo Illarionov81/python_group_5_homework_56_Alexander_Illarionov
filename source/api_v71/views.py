@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly, SAFE_METHODS, 
 from rest_framework.response import Response
 from rest_framework import viewsets
 from rest_framework.viewsets import ViewSet
-from webapp.models import Product, Order
+from webapp.models import Product, Order, Basket
 from api_v71.serializers import ProductSerializer, OrderSerializer
 
 
@@ -95,3 +95,35 @@ class OrderViewSet(ViewSet):
         order = get_object_or_404(Order, pk=pk)
         srl = OrderSerializer(order, context={'request': request})
         return Response(srl.data)
+
+
+# class BasketViewSet(ViewSet):
+#    queryset = Basket.objects.all()
+#
+#    def list(self, request):
+#        basket = Basket.objects.all()
+#        srl = BasketSerializer(basket, many=True, context={'request': request})
+#        return Response(srl.data)
+#
+#    def create(self, request):
+#        srl = BasketSerializer(data=request.data, context={'request': request})
+#        if srl.is_valid():
+#            basket = srl.save()
+#            return Response(srl.data)
+#        else:
+#            return Response(srl.errors, status=400)
+#
+#    def retrieve(self, request, pk=None):
+#        basket = get_object_or_404(Basket, pk=pk)
+#        srl = BasketSerializer(basket)
+#        return Response(srl.data)
+#
+#    def update(self, request, pk=None):
+#        product = get_object_or_404(Product, pk=pk)
+#        srl = ProductSerializer(data=request.data, instance=product, context={'request': request})
+#        if srl.is_valid():
+#            product = srl.save()
+#            return Response(srl.data)
+#        else:
+#            return Response(srl.errors, status=400)
+

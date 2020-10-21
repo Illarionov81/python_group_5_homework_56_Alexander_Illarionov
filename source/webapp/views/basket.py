@@ -13,7 +13,6 @@ from django.contrib import messages
 
 
 class AddToBasket(View):
-
     def post(self, request, *args, **kwargs):
         if not self.request.session.session_key:
             self.request.session.save()
