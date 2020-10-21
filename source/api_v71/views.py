@@ -59,8 +59,28 @@ class ProductViewSet(ViewSet):
 
 
 
-class OrderViewSet(viewsets.ModelViewSet):
-   queryset = Order.objects.all()
-   serializer_class = OrderSerializer
+# class OrderViewSet(viewsets.ModelViewSet):
+#    queryset = Order.objects.all()
+#    serializer_class = OrderSerializer
 
 
+class OrderViewSet(ViewSet):
+    queryset = Order.objects.all()
+
+    def list(self, request):
+        orders = Order.objects.all()
+        srl = OrderSerializer(orders, many=True)
+        return Response(srl.data)
+
+    def create(self, request):
+        srl = OrderSerializer(data=request.data)
+        if srl.is_valid():
+            order = srl.save()
+            return Response(srl.data)
+        else:
+            return Response(srl.errors, status=400)
+
+    def retrieve(self, request, pk=None):
+        order = get_object_or_404(Order, pk=pk)
+        srl = OrderSerializer(order)
+        return Response(srl.data)
