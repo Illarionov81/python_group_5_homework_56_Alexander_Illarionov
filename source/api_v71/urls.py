@@ -12,6 +12,5 @@ app_name = 'api_v2'
 urlpatterns = [
     path('', include(router.urls)),
     path('get_token/', get_token_view, name='get_token'),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
 
